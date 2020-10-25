@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/whatasapp-clone-1/static/css/main.f05790e0.chunk.css",
-    "main.js": "/whatasapp-clone-1/static/js/main.391ccce6.chunk.js",
-    "main.js.map": "/whatasapp-clone-1/static/js/main.391ccce6.chunk.js.map",
+    "main.js": "/whatasapp-clone-1/static/js/main.75b8def1.chunk.js",
+    "main.js.map": "/whatasapp-clone-1/static/js/main.75b8def1.chunk.js.map",
     "runtime-main.js": "/whatasapp-clone-1/static/js/runtime-main.5e2b7fb9.js",
     "runtime-main.js.map": "/whatasapp-clone-1/static/js/runtime-main.5e2b7fb9.js.map",
-    "static/js/2.8d832630.chunk.js": "/whatasapp-clone-1/static/js/2.8d832630.chunk.js",
-    "static/js/2.8d832630.chunk.js.map": "/whatasapp-clone-1/static/js/2.8d832630.chunk.js.map",
+    "static/js/2.89613e58.chunk.js": "/whatasapp-clone-1/static/js/2.89613e58.chunk.js",
+    "static/js/2.89613e58.chunk.js.map": "/whatasapp-clone-1/static/js/2.89613e58.chunk.js.map",
     "static/js/3.06ec3afe.chunk.js": "/whatasapp-clone-1/static/js/3.06ec3afe.chunk.js",
     "static/js/3.06ec3afe.chunk.js.map": "/whatasapp-clone-1/static/js/3.06ec3afe.chunk.js.map",
     "index.html": "/whatasapp-clone-1/index.html",
     "static/css/main.f05790e0.chunk.css.map": "/whatasapp-clone-1/static/css/main.f05790e0.chunk.css.map",
-    "static/js/2.8d832630.chunk.js.LICENSE.txt": "/whatasapp-clone-1/static/js/2.8d832630.chunk.js.LICENSE.txt"
+    "static/js/2.89613e58.chunk.js.LICENSE.txt": "/whatasapp-clone-1/static/js/2.89613e58.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.5e2b7fb9.js",
-    "static/js/2.8d832630.chunk.js",
+    "static/js/2.89613e58.chunk.js",
     "static/css/main.f05790e0.chunk.css",
-    "static/js/main.391ccce6.chunk.js"
+    "static/js/main.75b8def1.chunk.js"
   ]
 }
