@@ -20,7 +20,7 @@ export default function AllChats(props) {
         <div className="ChatsScroll">
 
         {props.activeUsers.map((chat)=>{
-            console.log('allchats')
+            // console.log('allchats')
            return  <AllChatsCard key={chat.uid} user={chat} setselectedUser={props.setselectedUser}/>
         })}
 

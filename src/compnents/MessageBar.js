@@ -1,4 +1,4 @@
-import React,{useContext,useEffect,useState} from 'react'
+import React,{useContext,useEffect,useState,useRef} from 'react'
 import AllChatsCard from './AllChatsCard'
 import { UserContext } from '../App'
 import {db,pushToFireBase} from '../firebase'
@@ -15,7 +15,7 @@ export default function MessageBar(props) {
     const [messageInput,setmessageInput]=useState([]);
   
 
-
+  
     // useEffect(()=>{
     //     var temp=[];
     //     db.collection('chats')
@@ -90,7 +90,7 @@ export default function MessageBar(props) {
     }
 
 // var chats=removeDuplicates(currentChat);
-var tempCha=currentChat.map(chat=>{
+var tempChats=currentChat.map(chat=>{
     if((chat.data['sender']===user.uid && chat.data['reciver']===selectedUserid ) || (chat.data['sender']===selectedUserid && chat.data['reciver']===user.uid))
     {
   
@@ -115,7 +115,7 @@ var tempCha=currentChat.map(chat=>{
             <div className="chatMessages">
                 {
 
-                    tempCha
+                    tempChats
                 }
 
               
@@ -123,7 +123,9 @@ var tempCha=currentChat.map(chat=>{
                 {/* <div className="reciveMessage">
                     <span>I'm Great!</span>
 
+                    
                 </div> */}
+                <div  id="messageEnd"></div>
             </div>
             
                 {/* <!-- reciver message --> */}
