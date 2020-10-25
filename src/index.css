@@ -1,0 +1,224 @@
+* {
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+  font-family: "Poppins", sans-serif;
+}
+
+.container {
+  min-height: 100vh;
+  min-width: 100%;
+  background-color: #131c21;
+  display: grid;
+  grid-template-rows: 0.9fr 9fr;
+  grid-template-columns: 1fr 3fr;
+  grid-template-areas:
+    "leftnav rightnav"
+    "allChats messageBar";
+}
+
+.leftnav {
+  grid-area: leftnav;
+  background-color: #2a2f32;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.profile__pic {
+  margin-left: 0.5rem;
+  max-width: 2.5rem;
+  max-height: 2.5rem;
+  min-width: 2.5rem;
+  min-height: 2.5rem;
+  border-radius: 50%;
+}
+
+.rightnav {
+  grid-area: rightnav;
+  border-left: 2px solid #3f4448;
+  /* background-color: greenyellow; */
+  background-color: #2a2f32;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.currentChatHeader {
+  display: flex;
+  color: white;
+}
+.profile__info {
+  margin-left: 0.4rem;
+  line-height: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  /* background-color: red; */
+  justify-content: center;
+}
+
+.profile__info h3 {
+  font-size: medium;
+}
+
+.profile__info span {
+  font-size: small;
+}
+
+.searchContainer {
+  width: 100%;
+  height: 3rem;
+  /* background-color: red; */
+}
+
+.search__inputContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 1rem solid wheat; */
+  /* background-color: red; */
+  padding: 0.6rem;
+  background-color: #131c21;
+}
+.searchContainer input {
+  color: #b1b3b5;
+
+  width: 90%;
+  background-color: #3e4346;
+  height: 2rem;
+  border-top-right-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+  border: none;
+}
+
+.search__inputContainer i {
+  color: #b1b3b5;
+  padding: 8px;
+  font-size: 1rem;
+  border-top-left-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+  background-color: #3e4346;
+}
+.allChats {
+  grid-area: allChats;
+
+  /* background-color: yellowgreen; */
+}
+.ChatsScroll {
+  width: 100%;
+  height: 82vh;
+
+  background-color: inherit;
+  overflow-x: hidden;
+}
+.chatCard {
+  background-color: #131c21;
+  min-height: 4.5rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  /* border-bottom: 1px solid #3f4448;
+    border-width: thin; */
+}
+
+.chatCard:hover {
+  background-color: #323739;
+}
+
+.chatFlex {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #131c21;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #696969;
+}
+
+*/ ::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.messageBar {
+  grid-area: messageBar;
+  background-color: #0d1418;
+  border-left: 2px solid #3f4448;
+  /* height: 100%; */
+  display: flex;
+  flex: 1;
+  background-color: #1a2125;
+  justify-content: center;
+  align-items: center;
+
+  flex-direction: column;
+}
+.chatMessages {
+  width: 100%;
+  /* flex: 1; */
+  overflow-y: auto;
+  height: 82vh;
+}
+
+.messageInput {
+  color: #b1b3b5;
+  align-self: flex-end;
+  height: 3.5rem;
+  background-color: #131c21;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 0.2rem;
+}
+
+.messageInput input {
+  color: #b1b3b5;
+  padding-left: 1rem;
+  width: 90%;
+  background-color: #3e4346;
+  height: 2rem;
+  border-radius: 2rem;
+
+  border: none;
+}
+input:focus {
+  outline: none;
+}
+
+.sendMessage {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+.sendMessage span {
+  margin-right: 1rem;
+  background-color: #054740;
+  color: white;
+  padding: 0.3rem 1rem;
+  margin-top: 0.3rem;
+  border-radius: 0.4rem;
+  border-top-right-radius: 0rem;
+}
+.reciveMessage {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+}
+.reciveMessage span {
+  margin-left: 1rem;
+
+  color: white;
+
+  background-color: #262d31;
+  padding: 0.3rem 1rem;
+  margin-top: 0.3rem;
+  border-radius: 0.4rem;
+  border-top-left-radius: 0rem;
+}
