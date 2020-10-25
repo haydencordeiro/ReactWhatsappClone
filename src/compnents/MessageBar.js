@@ -13,28 +13,52 @@ export default function MessageBar(props) {
 
     const [currentChat,setCurrentChat]=useState([]);
     const [messageInput,setmessageInput]=useState([]);
+  
 
 
     useEffect(()=>{
-        // setCurrentChat([]);
         var temp=[];
-        db.collection('chats').onSnapshot(result=>{
+        db.collection('chats')
+        .orderBy('timestamp','asc').onSnapshot(result=>{
         result.docs.map((doc)=>{
-            
-           if(doc.data()['sender']===user.uid && doc.data()['reciver']===selectedUserid  || doc.data()['sender']===selectedUserid && doc.data()['reciver']===user.uid){
-            temp.push(doc.data())
+            // console.log(doc.id);
+           if((doc.data()['sender']===user.uid && doc.data()['reciver']===selectedUserid ) || (doc.data()['sender']===selectedUserid && doc.data()['reciver']===user.uid)){
+            var data=doc.data();
+            data['id']=doc.id;
+            temp.push(data);
            }
             
             }
         )
-        setCurrentChat(temp);
+
+        setCurrentChat(removeDuplicates(temp));
         
       })},[selectedUserid,user]);
-      console.log(currentChat);
 
+    //   console.log(currentChat)
+      
+    function removeDuplicates(books) { 
+      
+        // Create an array of objects 
+        // books = [ 
+        //     { title: "C++", author: "Bjarne" }, 
+        //     { title: "Java", author: "James" }, 
+        //     { title: "Python", author: "Guido" }, 
+        //     { title: "Java", author: "James" }, 
+        // ]; 
+          
+        var jsonObject = books.map(JSON.stringify); 
+  
+  
+  
+        var uniqueSet = new Set(jsonObject); 
+        var uniqueArray = Array.from(uniqueSet).map(JSON.parse); 
+  
+       return (uniqueArray); 
+    } 
       function addMessage(props){
          
-        if(messageInput!=''){
+        if(messageInput!==''){
         pushToFireBase({
             msg:messageInput,
             sender:user.uid,
@@ -44,6 +68,8 @@ export default function MessageBar(props) {
         },'chats')
     }
         setmessageInput('');
+        
+
 
 
     }
@@ -55,17 +81,16 @@ export default function MessageBar(props) {
 
             <div className="chatMessages">
                 {
-                
-                    currentChat.map(chat=>{
-                        // console.log(chat);
-                        return (
-                            
-                            <div key={chat.timestamp+chat.msg} className={chat.sender===user.uid?'sendMessage':'reciveMessage'} >
-                            <span>{chat.msg}</span>
-                            </div>  
-                        )
+                currentChat.map(chat=>{
+
+                    return (
                         
-                    })
+                        <div key={chat.id} className={chat.sender===user.uid?'sendMessage':'reciveMessage'} >
+                        <span>{chat.msg}</span>
+                        </div>  
+                    )
+                    
+                })
                     
                 }
 
@@ -76,6 +101,7 @@ export default function MessageBar(props) {
 
                 </div> */}
             </div>
+            
                 {/* <!-- reciver message --> */}
             <div className="messageInput">
                 <i className="fas fa-grin-alt" style={{fontSize: '1.5rem',padding: '0.5rem',paddingLeft: '1rem',}}></i>
