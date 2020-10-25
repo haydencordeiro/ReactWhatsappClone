@@ -1,9 +1,9 @@
 import React,{useContext} from 'react'
 import AllChatsCard from './AllChatsCard'
-import { UserContext } from '../App'
+
 
 export default function AllChats(props) {
-    var allChats=useContext(UserContext)[1];
+    
 
 
     return (
@@ -19,7 +19,8 @@ export default function AllChats(props) {
         </div>
         <div className="ChatsScroll">
 
-        {allChats.map((chat)=>{
+        {props.activeUsers.map((chat)=>{
+            console.log('allchats')
            return  <AllChatsCard key={chat.uid} user={chat} setselectedUser={props.setselectedUser}/>
         })}
 

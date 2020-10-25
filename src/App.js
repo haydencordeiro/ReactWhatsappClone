@@ -80,11 +80,23 @@ useEffect(
 
 useEffect(()=>{
   var temp=[];
-  setactiveUsers([]);
-  db.collection('activeUsers').onSnapshot(result=>{
-  result.docs.map((doc)=>{temp.push(doc.data())}
+  
+  db.collection('activeUsers')
+  .onSnapshot(result=>{
+
+  setactiveUsers(
+    result.docs.map((doc)=>(
+      doc.data()
+    
+      ))
+  
+  
+  
   )
-  setactiveUsers(temp);
+ 
+  // setactiveUsers(temp);
+  // console.log('users changed');
+  // console.log(activeUsers);
   
 })},[]);
 
@@ -100,7 +112,7 @@ user?
 <div className="container">
  <LeftNav signOutGoogle={signOutGoogle}></LeftNav>
  <RightNav selectedUser={selectedUser}></RightNav>
- <AllChats setselectedUser={setselectedUser}></AllChats>
+ <AllChats setselectedUser={setselectedUser} activeUsers={activeUsers}></AllChats>
  <MessageBar selectedUser={selectedUser}></MessageBar>
 </div>
 </UserContext.Provider>:

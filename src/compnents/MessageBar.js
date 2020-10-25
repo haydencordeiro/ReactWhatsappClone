@@ -16,36 +16,51 @@ export default function MessageBar(props) {
   
 
 
-    useEffect(()=>{
-        var temp=[];
-        db.collection('chats')
-        .orderBy('timestamp','asc').onSnapshot(result=>{
-        result.docs.map((doc)=>{
-            // console.log(doc.id);
-           if((doc.data()['sender']===user.uid && doc.data()['reciver']===selectedUserid ) || (doc.data()['sender']===selectedUserid && doc.data()['reciver']===user.uid)){
-            var data=doc.data();
-            data['id']=doc.id;
-            temp.push(data);
-           }
+    // useEffect(()=>{
+    //     var temp=[];
+    //     db.collection('chats')
+    //     .orderBy('timestamp','asc').onSnapshot(result=>{
+    //     result.docs.map((doc)=>{
+    //         // console.log(doc.id);
+    //        if((doc.data()['sender']===user.uid && doc.data()['reciver']===selectedUserid ) || (doc.data()['sender']===selectedUserid && doc.data()['reciver']===user.uid)){
+    //         var data=doc.data();
+    //         data['id']=doc.id;
+    //         temp.push(data);
+    //        }
             
-            }
-        )
-
-        setCurrentChat(removeDuplicates(temp));
+    //         }
+    //     )
+            
+    //     setCurrentChat(temp);
         
-      })},[selectedUserid,user]);
+    //   })},[selectedUserid,user]);
 
     //   console.log(currentChat)
       
+
+    useEffect(()=>{
+        var temp=[];
+        
+        db.collection('chats')
+        .orderBy('timestamp','asc')
+        .onSnapshot(result=>{
+      
+        setCurrentChat(
+          result.docs.map((doc)=>(
+            {data:doc.data(),
+            id:doc.id}
+          
+            ))
+        
+        
+        
+        )
+    })},[]);
+        
+
     function removeDuplicates(books) { 
       
-        // Create an array of objects 
-        // books = [ 
-        //     { title: "C++", author: "Bjarne" }, 
-        //     { title: "Java", author: "James" }, 
-        //     { title: "Python", author: "Guido" }, 
-        //     { title: "Java", author: "James" }, 
-        // ]; 
+
           
         var jsonObject = books.map(JSON.stringify); 
   
@@ -74,24 +89,33 @@ export default function MessageBar(props) {
 
     }
 
+// var chats=removeDuplicates(currentChat);
+var tempCha=currentChat.map(chat=>{
+    if((chat.data['sender']===user.uid && chat.data['reciver']===selectedUserid ) || (chat.data['sender']===selectedUserid && chat.data['reciver']===user.uid))
+    {
+  
+    return (
+        
+        <div key={chat.id} className={chat.data.sender===user.uid?'sendMessage':'reciveMessage'} >
+        <span>{chat.data.msg}</span>
+        </div>  
+    )
+  }
+  else{
+      return(
+          <div key={chat.id}></div>
+      )
+  }
     
+});
 
     return (
         <div className="messageBar">
 
             <div className="chatMessages">
                 {
-                currentChat.map(chat=>{
 
-                    return (
-                        
-                        <div key={chat.id} className={chat.sender===user.uid?'sendMessage':'reciveMessage'} >
-                        <span>{chat.msg}</span>
-                        </div>  
-                    )
-                    
-                })
-                    
+                    tempCha
                 }
 
               
